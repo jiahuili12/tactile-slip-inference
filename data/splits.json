@@ -1,0 +1,6 @@
+{
+  "train": ["apple.csv", "ball.csv", "book.csv", "bottle.csv", "cable.csv", "carambole.csv", "cork.csv", "cream.csv"],
+  "validation": ["cup.csv", "elastic.csv"],
+  "calibration": ["foam.csv", "foam_filter.csv", "gluestick.csv"],
+  "test": ["grappe.csv", "socks.csv", "tissues.csv"]
+}
