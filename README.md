@@ -1,6 +1,6 @@
 # tactile-slip-inference
 
-Compare compact LSTM and GRU slip detectors on public AnySkin time series, then assess scalar temperature calibration on unseen objects. This is an offline baseline for later tactile-control experiments.
+Compare compact LSTM and GRU slip detectors on AnySkin time series, then assess scalar temperature calibration on unseen objects. This is an offline baseline for later tactile-control experiments.
 
 ## Start in VS Code / Windows PowerShell
 
