@@ -1,0 +1,96 @@
+{
+  "splits": {
+    "train": [
+      "apple.csv",
+      "ball.csv",
+      "book.csv",
+      "bottle.csv",
+      "cable.csv",
+      "carambole.csv",
+      "cork.csv",
+      "cream.csv",
+      "cup.csv",
+      "elastic.csv"
+    ],
+    "calibration": [
+      "foam.csv",
+      "foam_filter.csv",
+      "gluestick.csv"
+    ],
+    "test": [
+      "grappe.csv",
+      "socks.csv",
+      "tissues.csv"
+    ]
+  },
+  "raw_hashes": {
+    "apple.csv": "2bc01bb013d165452c7f0d2a7a2c7259e6118577f6dd0d38b40c02986f15939d",
+    "ball.csv": "42f329229697bb8a0b17b46e76c8e1432785f65b24fa8d83c904ab952470aa7f",
+    "book.csv": "df296726ac4e14087acf443f23d0a9abc484fc91d087691f5af0584681be26f7",
+    "bottle.csv": "8fdc76d44afd3df8d5b60fb649ca5e4338e1ad14fecb50f805705b43c9900959",
+    "cable.csv": "d0936a910802d360dd318276484289ff347be1f03960142646ddd6432bd19d0d",
+    "carambole.csv": "ac81025a24eabccfc992313ab185fe7f7a95a67357a03b3df42d61f8f269c9fc",
+    "cork.csv": "3aa5cfc11791865418688f9447f805bfdbfb9f928fb51489fcf82301781faef7",
+    "cream.csv": "f4c3a7f1929475de3c7818386652b89abb1a0ade7294b9716ef79703ee69b860",
+    "cup.csv": "3d4d4094612bfc13b06c2efe8212cedb2937f860eedef4994db30d6669b453bf",
+    "elastic.csv": "d82a7d06bf3270f9a3a6b3e1fb25b2ff12a983c8791dc493e3b2910b25498301",
+    "foam.csv": "7dc0c0c2b6882d37065e358030e171454d7684b7b6bf1d399d77cc137a070b63",
+    "foam_filter.csv": "6bad3e9bb6bcd5bbc255055a6b8f3ae0b991f3ec9027222660c423307b08c436",
+    "gluestick.csv": "e9c7741980f438d4e8f360339410b45bd9999c4d78b36888ac42a29a022b83f9",
+    "grappe.csv": "790518c45220afee081660aeecc66ede7b193a372f4851edd433ab2a366a3e4f",
+    "socks.csv": "882272b68e1594ae34a5e24a9824cf3a85d2a778e75120c9c2699ad8a0fee455",
+    "tissues.csv": "51aa80e403614c4d02189874fb470f10db52c9c7b1d73b165f98d29546cf8bf2"
+  },
+  "hz": 100,
+  "max_window": 50,
+  "stride": 5,
+  "max_gap_seconds": 0.1,
+  "dataset_revision": "d9f5e315006482635a2effa34488715871d55c13",
+  "preprocessing_signature": "bbfc10f2c366dfaed1a5b3f64f6b9f8e6ab254b92b1bac5e64e69e97ceda15b5",
+  "channels": [
+    "mag1_x",
+    "mag1_y",
+    "mag1_z",
+    "mag2_x",
+    "mag2_y",
+    "mag2_z",
+    "mag3_x",
+    "mag3_y",
+    "mag3_z",
+    "mag4_x",
+    "mag4_y",
+    "mag4_z",
+    "mag5_x",
+    "mag5_y",
+    "mag5_z"
+  ],
+  "scaler_fit_on": "unique resampled TRAIN rows only",
+  "scaler_fit_rows": 29883,
+  "label": "current slip at the common endpoint",
+  "excluded": [
+    "no_slip.csv"
+  ],
+  "counts": {
+    "train": {
+      "objects": 10,
+      "windows": 5884,
+      "slip_fraction": 0.18099932372570038
+    },
+    "calibration": {
+      "objects": 3,
+      "windows": 2041,
+      "slip_fraction": 0.14551690220832825
+    },
+    "test": {
+      "objects": 3,
+      "windows": 1813,
+      "slip_fraction": 0.21014893054962158
+    }
+  },
+  "prepared_sha256": {
+    "train.npz": "4c31a087c6b11ac0de803170791b75d031e07c877f4369e51c1762cf1179fe3c",
+    "calibration.npz": "c92aff48e6b0a6ead3cdf18e175fff6e425e596c5842270a27d6ea4f6ea2d108",
+    "test.npz": "363508780b4dba78768fe37b7b240e0160a9dde67290789bd3d3b049663c4f8d",
+    "scaler.npz": "76fdae4096c8b146fd4331511b2995c3095c75ec54ef503bc8ec4ad39617d4b0"
+  }
+}

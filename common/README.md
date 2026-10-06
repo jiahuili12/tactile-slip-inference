@@ -1,6 +1,6 @@
 # 1. 通用基础
 
-这里放两套实验共用的基础内容，不放某个实验的模型或性能结果。
+这里放三次实验共用的基础内容，不放某个实验的模型或性能结果。
 
 | 位置 | 用途 |
 |---|---|
@@ -9,8 +9,9 @@
 | [data/source_manifest.json](data/source_manifest.json) | 固定数据版本、下载地址和 SHA-256 |
 | `environment/` | 基础依赖、复现依赖、精确版本清单 |
 | `configs/lstm_gru/` | 第一次实验的配置；配置集中存放，但按实验分目录 |
+| `configs/temporal_ablation.yaml` | 第三次实验的固定协议：四组对照、物体划分和温度缩放 |
 | `src/utils.py` | 项目根目录定位、配置读取和公共工具 |
-| `src/download_data.py` | 下载公共数据，供两套实验使用 |
+| `src/download_data.py` | 下载公共数据，供三次实验使用 |
 | `tests/`、`testing.py` | 共享路径测试和 pytest 辅助设置 |
 | [LICENSE](LICENSE) | 项目许可证 |
 | [THIRD_PARTY.md](THIRD_PARTY.md) | 第三方数据、代码与论文来源 |

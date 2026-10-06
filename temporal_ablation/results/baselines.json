@@ -1,0 +1,20 @@
+{
+  "training_prior_probability": 0.18099932372570038,
+  "constant_training_prior": {
+    "accuracy": 0.7898510755653613,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "ap": 0.21014892443463873,
+    "roc_auc": 0.5,
+    "ece": 0.02914960070893835,
+    "nll": 0.5169094235514322,
+    "brier": 0.1668360532150937,
+    "rows": 1813,
+    "tn": 1432,
+    "fp": 0,
+    "fn": 381,
+    "tp": 0
+  },
+  "always_no_slip_accuracy": 0.7898510755653613
+}

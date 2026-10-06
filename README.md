@@ -1,6 +1,6 @@
 # tactile-slip-inference
 
-项目按三类组织：**通用基础、第一次 LSTM/GRU 实验、Pollen 公开流程复现**。本次只是目录重组，没有重新训练模型或修改已有指标。
+项目按**通用基础 + 三次独立实验**组织。新增第三次实验比较 LSTM/GRU 在 1/50 时间步下的表现；前两次实验的代码、模型和结果保持不变。
 
 ## 从哪里开始
 
@@ -9,6 +9,7 @@
 | `common/` | 共享原始数据、环境依赖、配置、许可证、来源和公共工具 | [通用基础说明](common/README.md) |
 | `lstm_gru/` | 第一次 LSTM/GRU 训练、温度缩放、专用数据、全部模型和结果 | [第一次实验说明](lstm_gru/README.md) |
 | `pollen_reproduction/` | Pollen 原流程复现的代码、测试、模型和全部结果 | [Pollen 复现说明](pollen_reproduction/README.md) |
+| `temporal_ablation/` | 同端点、按物体隔离的 LSTM/GRU × 1/50 步对照，以及温度缩放 | [第三次实验说明](temporal_ablation/README.md) |
 
 ```text
 tactile-slip-inference/
@@ -16,7 +17,7 @@ tactile-slip-inference/
 │   ├── data/raw/              共享的 17 个公开 CSV 和上游数据卡
 │   ├── data/source_manifest.json
 │   ├── environment/           依赖清单、已验证的版本锁定文件
-│   ├── configs/lstm_gru/      LSTM/GRU 配置，按实验分类
+│   ├── configs/               各实验配置
 │   ├── src/                  公共路径工具、数据下载器
 │   ├── tests/                项目结构与路径兼容性测试
 │   ├── LICENSE
@@ -32,6 +33,12 @@ tactile-slip-inference/
 │   ├── runs/seed42/           原来的完整 200-epoch 训练产物
 │   ├── results/              98.4346% 那次运行的指标、图表与报告
 │   └── tests/
+├── temporal_ablation/
+│   ├── src/                  配对时间窗口、固定轮数训练、校准与报告
+│   ├── data/fixed_v1/        第三次实验专用的处理后数据
+│   ├── runs/fixed200_seed42/ 四模型最终权重、日志与逐窗口预测
+│   ├── results/              对照指标、审计、图表与报告
+│   └── tests/
 └── README.md
 ```
 
@@ -41,8 +48,9 @@ tactile-slip-inference/
 
 - [第一次 LSTM/GRU 实验报告](lstm_gru/results/REPORT.md)：物体隔离测试，包含温度缩放。
 - [Pollen 复现报告](pollen_reproduction/results/REPORT.md)：完整 200 epochs，模型选择集 accuracy **98.4346%**、滑移 F1 **0.9436**。
+- [时间窗口对照报告](temporal_ablation/results/REPORT.md)：LSTM/GRU × 1/50 步，同端点、未见物体、固定最终轮数，包含温度缩放。
 
-两者评估协议不同，不能直接用 accuracy 比较优劣。Pollen 的 selection set 参与选模型，不是独立测试。两套实验都不包含 DAC、机器人控制或掉落率验证。
+不同实验的评估协议不同，不能直接用 accuracy 比较优劣。Pollen 的 selection set 参与选模型，不是独立测试。三次实验都不包含 DAC、机器人控制或掉落率验证。
 
 ## 运行方式
 
@@ -52,14 +60,15 @@ tactile-slip-inference/
 # 检查整个项目，不重新训练
 .\.venv\Scripts\python.exe -X utf8 -m pytest -q --basetemp .cache/pytest
 
-# 查看两个实验的参数
+# 查看三个实验的参数
 .\.venv\Scripts\python.exe -m lstm_gru --help
 .\.venv\Scripts\python.exe -m pollen_reproduction --help
+.\.venv\Scripts\python.exe -m temporal_ablation --help
 ```
 
-具体数据下载、训练和新建重复实验的方法分别见三个目录的 README。已经完成的模型默认不会被静默覆盖；本次保留了旧权重内的历史配置，并兼容其中的旧数据路径。
+具体数据下载、训练和新建重复实验的方法见各目录 README。已经完成的模型默认不会被静默覆盖；保留旧权重内的历史配置，并兼容其中的旧数据路径。
 
-原始数据、环境、缓存、处理后的数组和训练权重继续被 Git 忽略。代码、配置、小型结果和报告可以提交；
+原始数据、环境、缓存、处理后的数组和训练权重继续被 Git 忽略。仓库仅跟踪代码、配置、小型结果和报告；大型实验产物保留在本地，可按各实验说明重新生成。
 
 ## 来源与许可
 

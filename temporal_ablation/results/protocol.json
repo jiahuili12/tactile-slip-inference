@@ -1,0 +1,56 @@
+{
+  "seed": 42,
+  "epochs": 200,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "hidden_size": 128,
+  "threads_per_worker": 1,
+  "workers": 2,
+  "architectures": [
+    "lstm",
+    "gru"
+  ],
+  "sequence_lengths": [
+    1,
+    50
+  ],
+  "hz": 100,
+  "stride": 5,
+  "max_gap_seconds": 0.1,
+  "threshold": 0.5,
+  "temperature_bounds": [
+    0.05,
+    20.0
+  ],
+  "raw_dir": "common/data/raw",
+  "source_manifest": "common/data/source_manifest.json",
+  "prepared_dir": "temporal_ablation/data/fixed_v1",
+  "run_dir": "temporal_ablation/runs/fixed200_seed42",
+  "results_dir": "temporal_ablation/results",
+  "splits": {
+    "train": [
+      "apple.csv",
+      "ball.csv",
+      "book.csv",
+      "bottle.csv",
+      "cable.csv",
+      "carambole.csv",
+      "cork.csv",
+      "cream.csv",
+      "cup.csv",
+      "elastic.csv"
+    ],
+    "calibration": [
+      "foam.csv",
+      "foam_filter.csv",
+      "gluestick.csv"
+    ],
+    "test": [
+      "grappe.csv",
+      "socks.csv",
+      "tissues.csv"
+    ]
+  },
+  "frozen_at_utc": "2026-10-06T10:11:52.948764+00:00",
+  "preprocessing_signature": "bbfc10f2c366dfaed1a5b3f64f6b9f8e6ab254b92b1bac5e64e69e97ceda15b5"
+}
