@@ -1,0 +1,22 @@
+{
+  "rows": 25489,
+  "accuracy": 0.9843461885519244,
+  "precision": 0.9708963911525029,
+  "recall": 0.9177441540577717,
+  "f1": 0.9435723377174374,
+  "average_precision": 0.982000860089742,
+  "roc_auc": 0.9953719374883638,
+  "tn": 21754,
+  "fp": 100,
+  "fn": 299,
+  "tp": 3336,
+  "slip_fraction": 0.1426105378790851,
+  "decision_rule": "sigmoid(logit) > 0.5",
+  "protocol": "pollen_random_row_selection",
+  "seed": 42,
+  "selected_global_epoch": 175,
+  "full_epoch_budget": true,
+  "reported_accuracy": 0.9826,
+  "difference_percentage_points": 0.17461885519243214,
+  "independent_test": false
+}

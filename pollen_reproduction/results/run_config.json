@@ -1,0 +1,31 @@
+{
+  "upstream_commit": "24a3728c35985def720ff292a8a45ef7e8662a64",
+  "reported_accuracy": 0.9826,
+  "seed": 42,
+  "split_seed": 42,
+  "device": "cpu",
+  "threads": 1,
+  "batch_size": 32,
+  "hidden_size": 128,
+  "num_layers": 1,
+  "sequence_length": 1,
+  "learning_rate": 0.001,
+  "phases": 2,
+  "epochs_per_phase": 100,
+  "total_epochs": 200,
+  "parameter_count": 90881,
+  "full_epoch_budget": true,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "torch": "2.14.1",
+      "numpy": "2.5.3",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.9.1",
+      "datasets": "4.8.5"
+    },
+    "cuda_available": false
+  },
+  "started_at_utc": "2026-10-05T16:46:42.673574+00:00"
+}

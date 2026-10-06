@@ -1,0 +1,227 @@
+{
+  "dataset": "pollen-robotics/anyskin_slip_detection",
+  "revision": "d9f5e315006482635a2effa34488715871d55c13",
+  "hf_fingerprint": "6892b5ff1a28094e",
+  "loader": "datasets.load_dataset from the pinned HF Hub revision",
+  "rows": 127445,
+  "channels": [
+    "mag1_x",
+    "mag1_y",
+    "mag1_z",
+    "mag2_x",
+    "mag2_y",
+    "mag2_z",
+    "mag3_x",
+    "mag3_y",
+    "mag3_z",
+    "mag4_x",
+    "mag4_y",
+    "mag4_z",
+    "mag5_x",
+    "mag5_y",
+    "mag5_z"
+  ],
+  "sequence_length": 1,
+  "train_rows": 101956,
+  "selection_rows": 25489,
+  "train_slip_fraction": 0.1457393318414688,
+  "selection_slip_fraction": 0.14261053502559662,
+  "file_order_verified_against_local_csvs": true,
+  "files_in_hf_order": [
+    {
+      "file": "apple.csv",
+      "rows": 7670,
+      "start_row": 0
+    },
+    {
+      "file": "ball.csv",
+      "rows": 5646,
+      "start_row": 7670
+    },
+    {
+      "file": "book.csv",
+      "rows": 5438,
+      "start_row": 13316
+    },
+    {
+      "file": "bottle.csv",
+      "rows": 6152,
+      "start_row": 18754
+    },
+    {
+      "file": "cable.csv",
+      "rows": 5011,
+      "start_row": 24906
+    },
+    {
+      "file": "carambole.csv",
+      "rows": 7233,
+      "start_row": 29917
+    },
+    {
+      "file": "cork.csv",
+      "rows": 4842,
+      "start_row": 37150
+    },
+    {
+      "file": "cream.csv",
+      "rows": 6858,
+      "start_row": 41992
+    },
+    {
+      "file": "cup.csv",
+      "rows": 7543,
+      "start_row": 48850
+    },
+    {
+      "file": "elastic.csv",
+      "rows": 7199,
+      "start_row": 56393
+    },
+    {
+      "file": "foam.csv",
+      "rows": 8139,
+      "start_row": 63592
+    },
+    {
+      "file": "foam_filter.csv",
+      "rows": 8218,
+      "start_row": 71731
+    },
+    {
+      "file": "gluestick.csv",
+      "rows": 5546,
+      "start_row": 79949
+    },
+    {
+      "file": "grappe.csv",
+      "rows": 7348,
+      "start_row": 85495
+    },
+    {
+      "file": "no_slip.csv",
+      "rows": 22371,
+      "start_row": 92843
+    },
+    {
+      "file": "socks.csv",
+      "rows": 4131,
+      "start_row": 115214
+    },
+    {
+      "file": "tissues.csv",
+      "rows": 8100,
+      "start_row": 119345
+    }
+  ],
+  "source_files": [
+    {
+      "file": "apple.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/apple.csv",
+      "bytes": 2244167,
+      "sha256": "2bc01bb013d165452c7f0d2a7a2c7259e6118577f6dd0d38b40c02986f15939d"
+    },
+    {
+      "file": "ball.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/ball.csv",
+      "bytes": 1651425,
+      "sha256": "42f329229697bb8a0b17b46e76c8e1432785f65b24fa8d83c904ab952470aa7f"
+    },
+    {
+      "file": "book.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/book.csv",
+      "bytes": 1577695,
+      "sha256": "df296726ac4e14087acf443f23d0a9abc484fc91d087691f5af0584681be26f7"
+    },
+    {
+      "file": "bottle.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/bottle.csv",
+      "bytes": 1796718,
+      "sha256": "8fdc76d44afd3df8d5b60fb649ca5e4338e1ad14fecb50f805705b43c9900959"
+    },
+    {
+      "file": "cable.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/cable.csv",
+      "bytes": 1463363,
+      "sha256": "d0936a910802d360dd318276484289ff347be1f03960142646ddd6432bd19d0d"
+    },
+    {
+      "file": "carambole.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/carambole.csv",
+      "bytes": 2137720,
+      "sha256": "ac81025a24eabccfc992313ab185fe7f7a95a67357a03b3df42d61f8f269c9fc"
+    },
+    {
+      "file": "cork.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/cork.csv",
+      "bytes": 1426712,
+      "sha256": "3aa5cfc11791865418688f9447f805bfdbfb9f928fb51489fcf82301781faef7"
+    },
+    {
+      "file": "cream.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/cream.csv",
+      "bytes": 2005949,
+      "sha256": "f4c3a7f1929475de3c7818386652b89abb1a0ade7294b9716ef79703ee69b860"
+    },
+    {
+      "file": "cup.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/cup.csv",
+      "bytes": 2211239,
+      "sha256": "3d4d4094612bfc13b06c2efe8212cedb2937f860eedef4994db30d6669b453bf"
+    },
+    {
+      "file": "elastic.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/elastic.csv",
+      "bytes": 2099684,
+      "sha256": "d82a7d06bf3270f9a3a6b3e1fb25b2ff12a983c8791dc493e3b2910b25498301"
+    },
+    {
+      "file": "foam.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/foam.csv",
+      "bytes": 2366426,
+      "sha256": "7dc0c0c2b6882d37065e358030e171454d7684b7b6bf1d399d77cc137a070b63"
+    },
+    {
+      "file": "foam_filter.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/foam_filter.csv",
+      "bytes": 2422430,
+      "sha256": "6bad3e9bb6bcd5bbc255055a6b8f3ae0b991f3ec9027222660c423307b08c436"
+    },
+    {
+      "file": "gluestick.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/gluestick.csv",
+      "bytes": 1623456,
+      "sha256": "e9c7741980f438d4e8f360339410b45bd9999c4d78b36888ac42a29a022b83f9"
+    },
+    {
+      "file": "grappe.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/grappe.csv",
+      "bytes": 2129906,
+      "sha256": "790518c45220afee081660aeecc66ede7b193a372f4851edd433ab2a366a3e4f"
+    },
+    {
+      "file": "no_slip.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/no_slip.csv",
+      "bytes": 6480177,
+      "sha256": "cccc541ceea7c882e65b4b83aab53be79ae2e023b75c19d1c3a30c2288952f51"
+    },
+    {
+      "file": "socks.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/socks.csv",
+      "bytes": 1230606,
+      "sha256": "882272b68e1594ae34a5e24a9824cf3a85d2a778e75120c9c2699ad8a0fee455"
+    },
+    {
+      "file": "tissues.csv",
+      "source_url": "https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection/resolve/d9f5e315006482635a2effa34488715871d55c13/data/tissues.csv",
+      "bytes": 2366260,
+      "sha256": "51aa80e403614c4d02189874fb470f10db52c9c7b1d73b165f98d29546cf8bf2"
+    }
+  ],
+  "array_sha256": "4049741a793bea65e769a74aa711987be306737b02abafcf8d43623d58153c9b",
+  "train_index_sha256": "7bf08e555760d2e980020c063bbe94e74334242134cf9eb519769806aeb42828",
+  "selection_index_sha256": "92439314fdf6bd11fb5430c271f224540b55eab716c46bbac326f26533e6166b",
+  "scaler_fit_on": "ALL rows, intentionally following upstream (leakage)",
+  "split": "train_test_split(test_size=0.2, random_state=42), no stratification",
+  "selection_is_independent_test": false
+}

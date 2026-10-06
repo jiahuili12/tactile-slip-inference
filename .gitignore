@@ -3,9 +3,10 @@ __pycache__/
 .pytest_cache/
 *.pyc
 .env
-data/raw/
-data/processed/
-runs/
+common/data/raw/
+lstm_gru/data/processed/
+lstm_gru/runs/
+pollen_reproduction/runs/
 *.pt
 *.pth
 .DS_Store

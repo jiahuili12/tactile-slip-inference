@@ -1,86 +1,66 @@
 # tactile-slip-inference
 
-Compare compact LSTM and GRU slip detectors on public AnySkin time series, then assess scalar temperature calibration on unseen objects. This is an offline baseline for later tactile-control experiments.
+项目按三类组织：**通用基础、第一次 LSTM/GRU 实验、Pollen 公开流程复现**。本次只是目录重组，没有重新训练模型或修改已有指标。
 
-## Start in VS Code / Windows PowerShell
+## 从哪里开始
 
-Open this repository folder and select `.venv/Scripts/python.exe` using **Python: Select Interpreter**.
-An existing local `.venv` can be used directly. To create a new environment with your installed Python:
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-```
-
-Run commands from the repository root. Activation is optional: calling the environment's Python explicitly avoids PowerShell execution-policy issues.
-
-```powershell
-.\.venv\Scripts\python.exe -X utf8 -m src.download_data
-.\.venv\Scripts\python.exe -X utf8 -m src.prepare_data
-.\.venv\Scripts\python.exe -X utf8 -m pytest -q --basetemp .cache/pytest
-.\.venv\Scripts\python.exe -X utf8 -m src.run_experiment
-```
-
-The default experiment runs both models for up to 20 epochs, with validation early stopping and seeds 42, 43 and 44. It uses CPU and two PyTorch threads. No cloud compute, GitHub upload or robot connection is involved.
-
-For a separate quick end-to-end check:
-
-```powershell
-.\.venv\Scripts\python.exe -X utf8 -m src.run_experiment --seeds 99 --epochs 2 --output-dir runs/quick --results-dir results/quick
-```
-
-Existing completed run directories are protected against silent retraining. `--resume` reuses completed model checkpoints and repeats calibration/evaluation/aggregation. For a new experiment use a new output directory. Do not change preprocessing underneath existing checkpoints.
-
-## Individual steps
-
-```powershell
-.\.venv\Scripts\python.exe -m src.train --config configs/lstm.yaml --seed 42
-.\.venv\Scripts\python.exe -m src.calibrate --run runs/lstm_seed42
-.\.venv\Scripts\python.exe -m src.evaluate --run runs/lstm_seed42
-```
-
-Use `configs/gru.yaml` for GRU. The separate-step config default saves to `runs/`; the comparison pipeline saves to `runs/final_v1/`.
-
-## Experimental protocol
-
-- Public data: [Pollen Robotics AnySkin slip detection](https://huggingface.co/datasets/pollen-robotics/anyskin_slip_detection), revision pinned in the downloader.
-- Four disjoint object groups; see `data/splits.json`. The test comprises three unseen object recordings.
-- Fifteen magnetic channels, causal 100 Hz resampling, 50-sample windows, stride 5, current-slip label at window end. No bidirectional network or future label input.
-- Training-only channel standardisation; unweighted BCE; Adam; identical hidden size (32), one recurrent layer, batch size (128), learning rate and epoch budget. LSTM and GRU have different parameter counts, which are reported; this is a matched-hidden-size, not matched-parameter-count comparison.
-- Validation NLL chooses the checkpoint. A positive temperature in [0.05,20] is fitted only on calibration NLL. Optional F1 thresholds are chosen only on validation.
-- Main classification metrics use threshold 0.5. ECE is top-label confidence ECE with 15 equal-width bins; NLL and Brier score also assess probability quality. PR-AUC is reported as average precision (`pr_auc_ap`).
-- Scalar temperature leaves ranking and decisions at probability 0.5 unchanged. It can improve or worsen held-out calibration: calibration-set improvement is not a guarantee under object shift.
-- CPU latency uses a complete window, batch size 1, 20 warmups and 200 timings. It excludes data acquisition, preprocessing, calibration and actuation; it is not a robot control-frequency measurement.
-
-## Files and outputs
+| 目录 | 内容 | 入口 |
+|---|---|---|
+| `common/` | 共享原始数据、环境依赖、配置、许可证、来源和公共工具 | [通用基础说明](common/README.md) |
+| `lstm_gru/` | 第一次 LSTM/GRU 训练、温度缩放、专用数据、全部模型和结果 | [第一次实验说明](lstm_gru/README.md) |
+| `pollen_reproduction/` | Pollen 原流程复现的代码、测试、模型和全部结果 | [Pollen 复现说明](pollen_reproduction/README.md) |
 
 ```text
-configs/               matched architecture/training configurations
-data/splits.json        fixed object split
-data/source_manifest.json  download revision and per-file SHA-256 hashes
-src/download_data.py   download original data and card
-src/prepare_data.py    causal resampling, scaler and windows
-src/dataset.py         PyTorch dataset
-src/models.py          LSTM and GRU definitions
-src/train.py           shared training/early stopping
-src/calibrate.py       held-out temperature fit
-src/metrics.py         metrics and risk–coverage
-src/evaluate.py        held-out predictions and latency
-src/plot_results.py    aggregation and diagnostic plots
-src/run_experiment.py  six-run comparison
-src/report_results.py readable report and constant-prior baseline
-tests/                 leakage, causality, calibration and integration checks
-results/               real metrics, data report and figures
+tactile-slip-inference/
+├── common/
+│   ├── data/raw/              共享的 17 个公开 CSV 和上游数据卡
+│   ├── data/source_manifest.json
+│   ├── environment/           依赖清单、已验证的版本锁定文件
+│   ├── configs/lstm_gru/      LSTM/GRU 配置，按实验分类
+│   ├── src/                  公共路径工具、数据下载器
+│   ├── tests/                项目结构与路径兼容性测试
+│   ├── LICENSE
+│   └── THIRD_PARTY.md
+├── lstm_gru/
+│   ├── src/                  LSTM、GRU、训练、校准、评估和报告
+│   ├── data/                 物体划分、处理后的窗口数据与 scaler
+│   ├── runs/                 baseline_v1 和 final_v1 的原始模型与预测
+│   ├── results/              原有指标、图表、报告
+│   └── tests/
+├── pollen_reproduction/
+│   ├── src/                  Pollen 模型、数据处理、训练和报告
+│   ├── runs/seed42/           原来的完整 200-epoch 训练产物
+│   ├── results/              98.4346% 那次运行的指标、图表与报告
+│   └── tests/
+└── README.md
 ```
 
-`runs/` stores checkpoint weights, training histories, temperature fits and per-window test probabilities. It is ignored by Git. `results/metrics.csv` records each run; `summary.csv` reports mean and sample standard deviation across seeds (not statistical confidence intervals); `per_object.csv` exposes performance differences between test objects. Raw data, processed tensors, environment and caches are ignored by Git.
+按你的确认，运行基础设施 `.venv/`、`.git/`、`.vscode/`、`.cache/` 和 `.pytest_cache/` 保留在根目录；`.gitignore`、`pytest.ini` 也保留在根目录供工具识别。VS Code 的 Python 解释器仍是 `.venv/Scripts/python.exe`，不需要重新选择或安装环境。
 
-## Limits and interpretation
+## 查看已经完成的结果
 
-The public data were collected by Pollen Robotics on a Reachy 2 gripper. Offline performance does not establish performance on SO-100/SO-101, reduced object drop rates, future slip prediction, calibrated force estimation or physical safety. Those require separate robot data and controlled trials.
+- [第一次 LSTM/GRU 实验报告](lstm_gru/results/REPORT.md)：物体隔离测试，包含温度缩放。
+- [Pollen 复现报告](pollen_reproduction/results/REPORT.md)：完整 200 epochs，模型选择集 accuracy **98.4346%**、滑移 F1 **0.9436**。
 
-Window errors are temporally correlated. This one fixed split and three test objects are an initial baseline, not a statistically definitive architecture ranking. The provider's mixed-object `no_slip.csv` is excluded because object membership cannot be assigned to disjoint splits. Exact trial/reset identifiers are not supplied; preprocessing only detects timestamp gaps/resets.
+两者评估协议不同，不能直接用 accuracy 比较优劣。Pollen 的 selection set 参与选模型，不是独立测试。两套实验都不包含 DAC、机器人控制或掉落率验证。
 
-See [data documentation](data/README.md), [sources and method citations](THIRD_PARTY.md), and the generated `results/REPORT.md` for actual results. AnySkin and Pollen's reported numbers use different protocols and are not directly comparable to this baseline. Temperature scaling is implemented; DAC and hardware control are future extensions.
+## 运行方式
 
-Project code uses the MIT license. Third-party data/dependencies retain their respective licenses.
+所有命令都在**整个项目根目录**运行，不要先进入某个实验子目录。
+
+```powershell
+# 检查整个项目，不重新训练
+.\.venv\Scripts\python.exe -X utf8 -m pytest -q --basetemp .cache/pytest
+
+# 查看两个实验的参数
+.\.venv\Scripts\python.exe -m lstm_gru --help
+.\.venv\Scripts\python.exe -m pollen_reproduction --help
+```
+
+具体数据下载、训练和新建重复实验的方法分别见三个目录的 README。已经完成的模型默认不会被静默覆盖；本次保留了旧权重内的历史配置，并兼容其中的旧数据路径。
+
+原始数据、环境、缓存、处理后的数组和训练权重继续被 Git 忽略。代码、配置、小型结果和报告可以提交；**这次没有提交或上传 GitHub**。
+
+## 来源与许可
+
+[数据与方法来源](common/THIRD_PARTY.md) · [项目许可证](common/LICENSE)

@@ -1,0 +1,3 @@
+-r requirements.txt
+# Used only to reproduce Hugging Face's CSV types and file ordering.
+datasets>=3,<5

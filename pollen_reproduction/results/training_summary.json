@@ -1,0 +1,28 @@
+{
+  "completed_at_utc": "2026-10-05T16:57:36.433953+00:00",
+  "training_seconds": 653.7598931000102,
+  "phase_bests": [
+    {
+      "phase": 1,
+      "epoch_in_phase": 74,
+      "global_epoch": 74,
+      "train_nll": 0.05665097265123609,
+      "selection_accuracy": 0.983208417892456,
+      "epoch_seconds": 3.2752701999852434,
+      "elapsed_seconds": 242.7355503999861,
+      "checkpoint_updated": true
+    },
+    {
+      "phase": 2,
+      "epoch_in_phase": 75,
+      "global_epoch": 175,
+      "train_nll": 0.04797389895467847,
+      "selection_accuracy": 0.9843462109565735,
+      "epoch_seconds": 3.2240321999415755,
+      "elapsed_seconds": 571.8704703999683,
+      "checkpoint_updated": true
+    }
+  ],
+  "final_artifact": "phase2_best.pt",
+  "independent_test": false
+}
